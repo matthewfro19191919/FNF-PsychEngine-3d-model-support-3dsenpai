@@ -123,6 +123,14 @@ class TVStage extends BaseStage
 
 	var lowRes:Bool = false;
 
+	public var iconP1:HealthIcon;
+	public var iconP2:HealthIcon;
+	public var camHUD:FlxCamera;
+	public var camGame:FlxCamera;
+	public var camNotes:FlxCamera;
+	public var camUnderHUD:FlxCamera;
+	public var camOverlay:FlxCamera;
+
 	// var tex:Texture;
 	var posMap:Map<String, PosThing> = [];
 	var bgGirls:BackgroundGirls;
