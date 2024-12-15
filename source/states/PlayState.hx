@@ -148,9 +148,9 @@ class PlayState extends MusicBeatState
 	public var vocals:FlxSound;
 	public var opponentVocals:FlxSound;
 
-	public var dad:Character3D = null;
-	public var gf:Character3D = null;
-	public var boyfriend:Character3D = null;
+	public var dad:Character = null;
+	public var gf:Character = null;
+	public var boyfriend:Character = null;
 
 	public var notes:FlxTypedGroup<Note>;
 	public var unspawnNotes:Array<Note> = [];
@@ -698,7 +698,7 @@ class PlayState extends MusicBeatState
 		switch(type) {
 			case 0:
 				if(!boyfriendMap.exists(newCharacter)) {
-					var newBoyfriend:Character3D = new Character(0, 0, newCharacter, true);
+					var newBoyfriend:Character = new Character(0, 0, newCharacter, true);
 					boyfriendMap.set(newCharacter, newBoyfriend);
 					boyfriendGroup.add(newBoyfriend);
 					startCharacterPos(newBoyfriend);
@@ -708,7 +708,7 @@ class PlayState extends MusicBeatState
 
 			case 1:
 				if(!dadMap.exists(newCharacter)) {
-					var newDad:Character3D = new Character(0, 0, newCharacter);
+					var newDad:Character = new Character(0, 0, newCharacter);
 					dadMap.set(newCharacter, newDad);
 					dadGroup.add(newDad);
 					startCharacterPos(newDad, true);
@@ -718,7 +718,7 @@ class PlayState extends MusicBeatState
 
 			case 2:
 				if(gf != null && !gfMap.exists(newCharacter)) {
-					var newGf:Character3D = new Character(0, 0, newCharacter);
+					var newGf:Character = new Character(0, 0, newCharacter);
 					newGf.scrollFactor.set(0.95, 0.95);
 					gfMap.set(newCharacter, newGf);
 					gfGroup.add(newGf);
@@ -799,7 +799,7 @@ class PlayState extends MusicBeatState
 	public function getLuaObject(tag:String):Dynamic
 		return variables.get(tag);
 
-	function startCharacterPos(char:Character3D, ?gfCheck:Bool = false) {
+	function startCharacterPos(char:Character, ?gfCheck:Bool = false) {
 		if(gfCheck && char.curCharacter.startsWith('gf')) { //IF DAD IS GIRLFRIEND, HE GOES TO HER POSITION
 			char.setPosition(GF_X, GF_Y);
 			char.scrollFactor.set(0.95, 0.95);
@@ -2066,7 +2066,7 @@ class PlayState extends MusicBeatState
 
 			case 'Play Animation':
 				//trace('Anim to play: ' + value1);
-				var char:Character3D = dad;
+				var char:Character = dad;
 				switch(value2.toLowerCase().trim()) {
 					case 'bf' | 'boyfriend':
 						char = boyfriend;
@@ -2101,7 +2101,7 @@ class PlayState extends MusicBeatState
 				}
 
 			case 'Alt Idle Animation':
-				var char:Character3D = dad;
+				var char:Character = dad;
 				switch(value1.toLowerCase().trim()) {
 					case 'gf' | 'girlfriend':
 						char = gf;
@@ -2910,7 +2910,7 @@ class PlayState extends MusicBeatState
 		RecalculateRating(true);
 
 		// play character anims
-		var char:Character3D = boyfriend;
+		var char:Character = boyfriend;
 		if((note != null && note.gfNote) || (SONG.notes[curSection] != null && SONG.notes[curSection].gfSection)) char = gf;
 
 		if(char != null && (note == null || !note.noMissAnimation) && char.hasMissAnimations)
@@ -2948,7 +2948,7 @@ class PlayState extends MusicBeatState
 		}
 		else if(!note.noAnimation)
 		{
-			var char:Character3D = dad;
+			var char:Character = dad;
 			var animToPlay:String = singAnimations[Std.int(Math.abs(Math.min(singAnimations.length-1, note.noteData)))] + note.animSuffix;
 			if(note.gfNote) char = gf;
 
@@ -3003,7 +3003,7 @@ class PlayState extends MusicBeatState
 			{
 				var animToPlay:String = singAnimations[Std.int(Math.abs(Math.min(singAnimations.length-1, note.noteData)))] + note.animSuffix;
 
-				var char:Character3D = boyfriend;
+				var char:Character = boyfriend;
 				var animCheck:String = 'hey';
 				if(note.gfNote)
 				{
