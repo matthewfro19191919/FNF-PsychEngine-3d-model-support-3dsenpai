@@ -133,6 +133,9 @@
 	<haxedef name="HXC_LIBVLC_LOGGING" if="VIDEOS_ALLOWED debug" />
 	<haxedef name="HXVLC_NO_SHARE_DIRECTORY" if="VIDEOS_ALLOWED" />
 	<define name="x86_BUILD" if="32bits" />
+    
+	<!-- 3d stuff -->
+	<haxelib name="away3d"/>
 	
 	<!-- ______________________________ Haxedefines _____________________________ -->
 
