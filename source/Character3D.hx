@@ -5,7 +5,7 @@ import flixel.FlxBasic;
 import flixel.util.FlxColor;
 import flixel.graphics.FlxGraphic;
 import flixel.addons.display.FlxNestedSprite;
-import flixel.util.FlxDestroyUtil;;
+import flixel.util.FlxDestroyUtil;
 import flixel.util.FlxSort;
 import flixel.util.FlxDestroyUtil;
 import haxe.macro.Type.AnonStatus;
