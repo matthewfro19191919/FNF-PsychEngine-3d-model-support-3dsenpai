@@ -65,6 +65,7 @@ import openfl.events.KeyboardEvent;
 import Section.SwagSection;
 import backend.Song.SwagSong;
 import backend.Song.SongEvents;
+import objects.HealthIcon;
 // import shaders.WiggleEffect.WiggleEffectType;
 // import flixel.FlxBasic;
 import flixel.FlxCamera;
