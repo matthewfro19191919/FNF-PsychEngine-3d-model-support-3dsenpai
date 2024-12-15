@@ -132,8 +132,6 @@ class School extends BaseStage
 
 			view.view.visible = false;
 
-			curStage = 'school';
-
 			LoadingCount.expand(2);
 
 			view.distance = 370;
