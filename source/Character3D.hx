@@ -1,6 +1,6 @@
 package;
 
-import backend.animation.PsychAnimationController
+import backend.animation.PsychAnimationController;
 import flixel.FlxBasic;
 import flixel.util.FlxColor;
 import flixel.graphics.FlxGraphic;
