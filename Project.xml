@@ -78,6 +78,9 @@
 	<assets path="assets/songs"         exclude="*.mp3" unless="web"/>
 	<assets path="assets/week_assets"   rename="assets" exclude="*.ogg" if="web"/>
 	<assets path="assets/week_assets"   rename="assets" exclude="*.mp3" unless="web"/>
+	<assets path="assets/models" />
+	<assets path="assets/agal" embed='true' unless="debug"/>
+	<assets path="assets/agal" if="debug"/>
 	<section if="TITLE_SCREEN_EASTER_EGG">
 		<assets path="assets/secrets" rename="assets/shared" exclude="*.ogg" if="web"/>
 		<assets path="assets/secrets" rename="assets/shared" exclude="*.mp3"  unless="web"/>
