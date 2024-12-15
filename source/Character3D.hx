@@ -403,6 +403,29 @@ class Character3D extends FlxSprite
 				holdTimer = 0;
 			}
 		}
+		if(isAnimateAtlas) atlas.update(elapsed);
+
+		if(debugMode || (!isAnimateAtlas && animation.curAnim == null) || (isAnimateAtlas && (atlas.anim.curInstance == null || atlas.anim.curSymbol == null)))
+		{
+			super.update(elapsed);
+			return;
+		}
+
+		if(heyTimer > 0)
+		{
+			var rate:Float = (PlayState.instance != null ? PlayState.instance.playbackRate : 1.0);
+			heyTimer -= elapsed * rate;
+			if(heyTimer <= 0)
+			{
+				var anim:String = getAnimationName();
+				if(specialAnim && (anim == 'hey' || anim == 'cheer'))
+				{
+					specialAnim = false;
+					dance();
+				}
+				heyTimer = 0;
+			}
+        }
 		switch(curCharacter)
 		{
 			case 'pico-speaker':
@@ -417,6 +440,19 @@ class Character3D extends FlxSprite
 				}
 				if(isAnimationFinished()) playAnim(getAnimationName(), false, false, animation.curAnim.frames.length - 3);
 		}
+
+		if (getAnimationName().startsWith('sing')) holdTimer += elapsed;
+		else if(isPlayer) holdTimer = 0;
+
+		if (!isPlayer && holdTimer >= Conductor.stepCrochet * (0.0011 #if FLX_PITCH / (FlxG.sound.music != null ? FlxG.sound.music.pitch : 1) #end) * singDuration)
+		{
+			dance();
+			holdTimer = 0;
+		}
+
+		var name:String = getAnimationName();
+		if(isAnimationFinished() && hasAnimation('$name-loop'))
+			playAnim('$name-loop');
 
 		super.update(elapsed);
 	}
@@ -478,6 +514,21 @@ class Character3D extends FlxSprite
 	 */
 	public function dance(?ignoreDebug:Bool = false)
 	{
+		if (!debugMode && !skipDance && !specialAnim)
+		{
+			if(danceIdle)
+			{
+				danced = !danced;
+
+				if (danced)
+					playAnim('danceRight' + idleSuffix);
+				else
+					playAnim('danceLeft' + idleSuffix);
+			}
+			else if(hasAnimation('idle' + idleSuffix))
+				playAnim('idle' + idleSuffix);
+		}
+
 		if (PlayState.instance.endingSong)
 			return;
 
@@ -558,6 +609,36 @@ class Character3D extends FlxSprite
 
 	public function playAnim(AnimName:String, Force:Bool = false, Reversed:Bool = false, Frame:Int = 0):Void
 	{
+		specialAnim = false;
+		if(!isAnimateAtlas)
+		{
+			animation.play(AnimName, Force, Reversed, Frame);
+		}
+		else
+		{
+			atlas.anim.play(AnimName, Force, Reversed, Frame);
+			atlas.update(0);
+		}
+		_lastPlayedAnimation = AnimName;
+
+		if (hasAnimation(AnimName))
+		{
+			var daOffset = animOffsets.get(AnimName);
+			offset.set(daOffset[0], daOffset[1]);
+		}
+		//else offset.set(0, 0);
+
+		if (curCharacter.startsWith('gf-') || curCharacter == 'gf')
+		{
+			if (AnimName == 'singLEFT')
+				danced = true;
+
+			else if (AnimName == 'singRIGHT')
+				danced = false;
+
+			if (AnimName == 'singUP' || AnimName == 'singDOWN')
+				danced = !danced;
+		}
 		if (PlayState.instance.endingSong)
 			return;
 
