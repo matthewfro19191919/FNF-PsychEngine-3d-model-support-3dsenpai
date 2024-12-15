@@ -133,7 +133,7 @@ class TVStage extends BaseStage
 
 	// var tex:Texture;
 	var posMap:Map<String, PosThing> = [];
-	var bgGirls:BackgroundGirls;
+
 	override function create()
 	{
 
