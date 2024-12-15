@@ -51,7 +51,7 @@ typedef AnimArray = {
 	var offsets:Array<Int>;
 }
 
-class Character3D extends FlxBasic
+class Character3D extends FlxSprite
 {
 	/**
 	 * In case a character is missing, it will use this on its place
