@@ -5,6 +5,11 @@ import lime.utils.Assets;
 
 import objects.Note;
 
+typedef SongEvents =
+{
+	var events:Array<Dynamic>;
+}
+
 typedef SwagSong =
 {
 	var song:String;
@@ -178,5 +183,10 @@ class Song
 			}
 		}
 		return songJson;
+	}
+	public static function parseEventJSON(rawJson:String):SongEvents
+	{
+		var swagShit:SongEvents = cast Json.parse(rawJson).events;
+		return swagShit;
 	}
 }
