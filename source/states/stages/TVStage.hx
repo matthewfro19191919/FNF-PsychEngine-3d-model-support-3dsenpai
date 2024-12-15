@@ -126,8 +126,6 @@ class TVStage extends BaseStage
 
 	public var iconP1:HealthIcon;
 	public var iconP2:HealthIcon;
-	public var camHUD:FlxCamera;
-	public var camGame:FlxCamera;
 	public var camNotes:FlxCamera;
 	public var camUnderHUD:FlxCamera;
 	public var camOverlay:FlxCamera;
