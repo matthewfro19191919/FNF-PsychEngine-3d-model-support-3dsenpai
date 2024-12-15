@@ -128,7 +128,7 @@ class School extends BaseStage
 	var bgGirls:BackgroundGirls;
 	override function create()
 	{
-			view = new ModelView(1, 0, 1, 1, 6000, Config.lowRes);
+			view = new ModelView(1, 0, 1, 1, 6000);
 
 			view.view.visible = false;
 
