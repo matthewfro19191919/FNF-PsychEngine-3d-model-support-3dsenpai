@@ -117,7 +117,6 @@ class School extends BaseStage
 	var skybox:SkyBox;
 	var skyboxTex:BitmapCubeTexture;
 
-	var curCharacter:Character3D;
 	var view:ModelView;
 
 	var tv:TVModel;
