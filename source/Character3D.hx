@@ -230,6 +230,13 @@ class Character3D extends FlxSprite
 				atf = true;
 				light = true;
 				jointsPerVertex = 1;
+
+			case 'pico-speaker':
+				skipDance = true;
+				loadMappedAnims();
+				playAnim("shoot1");
+			case 'pico-blazin', 'darnell-blazin':
+				skipDance = true;
 		}
 
 		this.modelView = modelView;
