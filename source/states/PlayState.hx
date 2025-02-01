@@ -373,8 +373,8 @@ class PlayState extends MusicBeatState
 
 		switch (curStage)
 		{
-			case 'school': new School();				//Week 6 - Senpai, Roses
-			case 'tvStage': new TVStage();		//Week 6 - Fuzzy logic
+			case 'school': new School();	//Week 6 - Senpai, Roses
+			case 'tvStage': new TVStage();	//Week 6 - Fuzzy logic
 		}
 		if(isPixelStage) introSoundsSuffix = '-pixel';
 
