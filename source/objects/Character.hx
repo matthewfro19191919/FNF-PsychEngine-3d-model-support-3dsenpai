@@ -85,6 +85,8 @@ class Character extends FlxSprite
 	public var originalFlipX:Bool = false;
 	public var editorIsPlayer:Null<Bool> = null;
 
+	var antialias = true;
+
 	// 3D
 	public var modelView:ModelView;
 	public var beganLoading:Bool = false;
