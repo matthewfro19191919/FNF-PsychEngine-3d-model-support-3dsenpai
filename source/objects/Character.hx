@@ -9,6 +9,7 @@ import openfl.utils.AssetType;
 import openfl.utils.Assets;
 import haxe.Json;
 
+import ModelView;
 import backend.Song;
 import states.stages.objects.TankmenBG;
 
@@ -61,6 +62,9 @@ class Character extends FlxSprite
 	public var idleSuffix:String = '';
 	public var danceIdle:Bool = false; //Character use "danceLeft" and "danceRight" instead of "idle"
 	public var skipDance:Bool = false;
+
+        public var canAutoAnim:Bool = true;
+	public var canAutoIdle:Bool = true;
 
 	public var healthIcon:String = 'face';
 	public var animationsArray:Array<AnimArray> = [];
@@ -475,7 +479,7 @@ class Character extends FlxSprite
 	/**
 	 * FOR GF DANCING SHIT
 	 */
-	public function dance()
+	public function dance(?ignoreDebug:Bool = false)
 	{
 		if (!model.fullyLoaded)
 			return;
