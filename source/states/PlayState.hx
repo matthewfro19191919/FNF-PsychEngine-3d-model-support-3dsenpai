@@ -89,10 +89,10 @@ class PlayState extends MusicBeatState
 	//event variables
 	private var isCameraOnForcedPos:Bool = false;
 
-	public var boyfriendMap:Map<String, Character> = new Map<String, Character>();
-	public var dadMap:Map<String, Character> = new Map<String, Character>();
-	public var gfMap:Map<String, Character> = new Map<String, Character>();
-
+	public var boyfriendMap:Map<String, Character3D> = new Map<String, Character3D>();
+	public var dadMap:Map<String, Character3D> = new Map<String, Character3D>();
+	public var gfMap:Map<String, Character3D> = new Map<String, Character3D>();
+	
 	#if HSCRIPT_ALLOWED
 	public var hscriptArray:Array<HScript> = [];
 	#end
