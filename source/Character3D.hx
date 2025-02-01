@@ -65,7 +65,7 @@ class Character3D extends FlxSprite
 	public var isPlayer:Bool = false;
 	public var curCharacter:String = DEFAULT_CHARACTER;
 
-  public var holdTimer:Float = 0;
+        public var holdTimer:Float = 0;
 	public var heyTimer:Float = 0;
 	public var specialAnim:Bool = false;
 	public var animationNotes:Array<Dynamic> = [];
@@ -130,21 +130,6 @@ class Character3D extends FlxSprite
 		changeCharacter(character);
 		
 		switch(curCharacter)
-		{
-			case 'pico-speaker':
-				skipDance = true;
-				loadMappedAnims();
-				playAnim("shoot1");
-			case 'pico-blazin', 'darnell-blazin':
-				skipDance = true;
-		}
-
-		curCharacter = character;
-		this.isPlayer = isPlayer;
-
-		var antialias = true;
-
-		switch (curCharacter)
 		{
 			case 'bf':
 				modelName = 'bf';
@@ -230,7 +215,6 @@ class Character3D extends FlxSprite
 				atf = true;
 				light = true;
 				jointsPerVertex = 1;
-
 			case 'pico-speaker':
 				skipDance = true;
 				loadMappedAnims();
@@ -238,6 +222,10 @@ class Character3D extends FlxSprite
 			case 'pico-blazin', 'darnell-blazin':
 				skipDance = true;
 		}
+
+		curCharacter = character;
+
+		var antialias = true;
 
 		this.modelView = modelView;
 		model = new ModelThing(modelView, modelName, 'awd', animSpeed, noLoopList, modelScale, initYaw, initPitch, initRoll, xOffset, yOffset, zOffset, false,
@@ -811,6 +799,17 @@ class Character3D extends FlxSprite
 	{
 		atlas = FlxDestroyUtil.destroy(atlas);
 		super.destroy();
+
+		if (model != null)
+			model.destroy();
+		model = null;
+		modelView = null;
+		if (animSpeed != null)
+		{
+			animSpeed.clear();
+			animSpeed = null;
+		}
+		super.destroy();
 	}
 	#end
 	public function getCurAnim()
@@ -827,19 +826,5 @@ class Character3D extends FlxSprite
 			return model.animationSetSkeleton.hasAnimation(anim);
 		else
 			return false;
-	}
-
-	override public function destroy()
-	{
-		if (model != null)
-			model.destroy();
-		model = null;
-		modelView = null;
-		if (animSpeed != null)
-		{
-			animSpeed.clear();
-			animSpeed = null;
-		}
-		super.destroy();
 	}
 }
