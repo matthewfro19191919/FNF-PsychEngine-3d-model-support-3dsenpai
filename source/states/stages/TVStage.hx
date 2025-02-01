@@ -121,8 +121,6 @@ class TVStage extends BaseStage
 	var view:ModelView;
 
 	var tv:TVModel;
-
-        var curCharacter:Character3D;
 	
 	var lowRes:Bool = false;
 
