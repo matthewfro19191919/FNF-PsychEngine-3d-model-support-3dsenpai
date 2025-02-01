@@ -117,6 +117,7 @@ class School extends BaseStage
 	var skybox:SkyBox;
 	var skyboxTex:BitmapCubeTexture;
 
+	var curCharacter:Character3D;
 	var view:ModelView;
 
 	var tv:TVModel;
@@ -128,6 +129,93 @@ class School extends BaseStage
 	var bgGirls:BackgroundGirls;
 	override function create()
 	{
+		switch (curCharacter)
+		{
+			case 'bf':
+				modelName = 'bf';
+				modelScale = 1;
+				animSpeed = ["default" => 1];
+				noLoopList = ["idle", "singUP", "singLEFT", "singRIGHT", "singDOWN"];
+				ambient = 0;
+				specular = 0;
+				diffuse = 1;
+				initYaw = 65;
+				zOffset = 150;
+				geoMap = [
+					"singUP" => "singUP",
+					"singRIGHT" => "singRIGHT",
+					"singDOWN" => "singDOWN",
+					"idle" => "default",
+					"idleEnd" => "default",
+					"singLEFT" => "singUP"
+				];
+				atf = true;
+			case 'gf':
+				modelName = 'gf';
+				modelScale = 1;
+				animSpeed = ["default" => 1];
+				noLoopList = ["danceLEFT", "danceRIGHT"];
+				ambient = 0;
+				specular = 0;
+				diffuse = 1;
+				xOffset = -100;
+				yOffset = -20;
+				atf = true;
+			case 'senpai':
+				modelName = 'senpai';
+				modelScale = 1;
+				animSpeed = ["default" => 1];
+				noLoopList = ["idle", "singUP", "singLEFT", "singRIGHT", "singDOWN"];
+				ambient = 0;
+				specular = 0;
+				diffuse = 1;
+				initYaw = -65;
+				zOffset = -150;
+				yOffset = 70;
+				geoMap = [
+					"singUP" => "singUP",
+					"singRIGHT" => "singRIGHT",
+					"singDOWN" => "singDOWN",
+					"singLEFT" => "singLEFT",
+					"idle" => "default",
+					"idleEnd" => "default"
+				];
+				antialias = false;
+			case 'senpai-angry':
+				modelName = 'senpai-angry';
+				modelScale = 1;
+				animSpeed = ["default" => 1];
+				noLoopList = ["idle", "singUP", "singLEFT", "singRIGHT", "singDOWN"];
+				ambient = 0;
+				specular = 0;
+				diffuse = 1;
+				initYaw = -65;
+				zOffset = -150;
+				yOffset = 70;
+				geoMap = [
+					"singUP" => "singUP",
+					"singRIGHT" => "singRIGHT",
+					"singDOWN" => "singDOWN",
+					"singLEFT" => "singLEFT",
+					"idle" => "default",
+					"idleEnd" => "default"
+				];
+				antialias = false;
+			case 'hydra':
+				modelName = 'hydra';
+				modelScale = 1;
+				animSpeed = ["default" => 1];
+				noLoopList = ["idle", "singUP", "singLEFT", "singRIGHT", "singDOWN"];
+				ambient = 0.5;
+				specular = 0.5;
+				diffuse = 1;
+				initYaw = 0;
+				xOffset = -150;
+				yOffset = 120;
+				atf = true;
+				light = true;
+				jointsPerVertex = 1;
+		}
 		view = new ModelView(1, 0, 1, 1, 6000);
 
 			view.view.visible = false;
