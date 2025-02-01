@@ -213,7 +213,7 @@ class Character extends FlxSprite
 				skipDance = true;
 		}
 
-		this.modelView = modelView;
+		this.modelView = ModelView;
 		model = new ModelThing(modelView, modelName, 'awd', animSpeed, noLoopList, modelScale, initYaw, initPitch, initRoll, xOffset, yOffset, zOffset, false,
 			antialias, atf, ambient, specular, light, jointsPerVertex);
 	}
