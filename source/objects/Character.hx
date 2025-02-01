@@ -51,7 +51,7 @@ typedef AnimArray = {
 	var offsets:Array<Int>;
 }
 
-class Character3D extends FlxSprite
+class Character extends FlxSprite
 {
 	/**
 	 * In case a character is missing, it will use this on its place
@@ -804,6 +804,17 @@ class Character3D extends FlxSprite
 	{
 		atlas = FlxDestroyUtil.destroy(atlas);
 		super.destroy();
+
+		if (model != null)
+			model.destroy();
+		model = null;
+		modelView = null;
+		if (animSpeed != null)
+		{
+			animSpeed.clear();
+			animSpeed = null;
+		}
+		super.destroy();
 	}
 	#end
 	public function getCurAnim()
@@ -820,19 +831,5 @@ class Character3D extends FlxSprite
 			return model.animationSetSkeleton.hasAnimation(anim);
 		else
 			return false;
-	}
-
-	override public function destroy()
-	{
-		if (model != null)
-			model.destroy();
-		model = null;
-		modelView = null;
-		if (animSpeed != null)
-		{
-			animSpeed.clear();
-			animSpeed = null;
-		}
-		super.destroy();
 	}
 }
